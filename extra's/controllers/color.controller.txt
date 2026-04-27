@@ -1,0 +1,16 @@
+// import React from 'react'
+
+const getColors = async (req, res) => {
+  const colors = [
+    { id: "1", color: "#abc" },
+    { id: "2", color: "#def" },
+    { id: "3", color: "#124" },
+  ];
+
+  return res.send({
+    status: "true",
+    housecolors: colors,
+  });
+};
+
+export default getColors;

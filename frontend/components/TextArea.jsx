@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-const TextArea = () => {
-//   return (
-    
-//   )
-}
+const TextArea = (props) => {
+  const { rows, cols, hint, className, ...otherProps } = props;
 
-export default TextArea
+  return (
+    <textarea
+      {...otherProps}
+      rows={rows}
+      cols={cols}
+      placeholder={hint}
+      className={className}
+    ></textarea>
+  );
+};
+
+export default TextArea;

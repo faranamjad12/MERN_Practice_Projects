@@ -12,7 +12,6 @@ const App = () => {
     </Routes>
   );
 };
-
 export default App;
 // ----
 // import { useState } from "react";

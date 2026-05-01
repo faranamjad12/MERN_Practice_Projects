@@ -20,7 +20,7 @@ const AppLayout = ({ children, list, editor, sidebar = true }) => {
       {/* Content */}
       {/* {children !== null ? ( */}
       {children && (
-        <main className="w-1/3 border-r bg-gray-50 p-4">{children}</main>
+        <main className="w-full border-r bg-gray-50 p-4">{children}</main>
       )}
       {/* Editor */}
       {

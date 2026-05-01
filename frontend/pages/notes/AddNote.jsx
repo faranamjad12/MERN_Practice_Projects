@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AppLayout from "../../layouts/AppLayout";
-import NoteItem from "../../components/notes/NoteItem";
 import { GoArrowLeft } from "react-icons/go";
 import { Link } from "react-router";
 import TextInput from "../../components/TextInput";
@@ -36,8 +35,16 @@ const AddNote = () => {
   };
 
   return (
-    <AppLayout>
-      <div>
+    // <AppLayout>
+    <AppLayout
+      
+      // sidebar={true}
+      list={null}
+      editor={null}
+      
+      
+       children={ 
+        <div>
         <Link to={"/"} className="flex items-center gap-3 mb-4">
           <GoArrowLeft /> <span>Back to list</span>
         </Link>
@@ -89,8 +96,10 @@ const AddNote = () => {
             </div>
           </form>
         </div>
-      </div>
-    </AppLayout>
+        </div>
+      }
+    // </AppLayout>
+    />
   );
 };
 

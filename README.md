@@ -1,2 +1,2 @@
-# MERN_Practice_Projects
+# Notes
 Projects learned while working at PNY

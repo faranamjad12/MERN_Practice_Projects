@@ -5,22 +5,28 @@ import NoteItem from "../../components/notes/NoteItem";
 import { set } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import EditNote from "../../components/EditNote";
-import styled from "styled-components";
+import * as motion from "motion/react-client";
+import toast from "react-hot-toast";
+import { NOTE_DELETE_URL, NOTES_URL } from "../../src/utils/api";
 
-const notes_url = "http://localhost:5001/notes";
+// const notes_url = "http://localhost:5001/notes";
 
 const NotesList = () => {
   const [notes, setNotes] = useState([]);
+  const square = {
+    width: "100%",
+    height: "100%",
+  };
 
   const getNotes = async () => {
     try {
-      const response = await axios.get(notes_url);
+      const response = await axios.get(NOTES_URL);
       if (response.data.status == true) {
         setNotes(response.data.notes);
         // console.log(response.data.notes);
-        // console.log(notes);
+        // console.log(response);
       } else {
-        console.log("failed to retrieve data");
+        console.log("Failed to fetch data");
       }
     } catch (error) {
       console.log("ERR:", error);
@@ -30,149 +36,74 @@ const NotesList = () => {
     getNotes();
   }, []);
 
-  // const [activeNote, setActiveNote] = useState(notes[0]);
+  const handleDelete = async (data) => {
+    if (!confirm("Are you sure you want to delete this note?")) {
+      return;
+    }
 
-  // console.log(activeNote);
-  // const setActiveNote = (note) => {
-  //    setActiveNote(true);
-  //   const activeNoteData = {
-  //     id: note.id,
-  //     title: note.title,
-  //     content: note.content,
-  //     color: note.color,
-  //     date: note.date,
-  //   };
-  //   return activeNoteData;
-  // };
-  // async
-  // const setNoteId = (e, id) => {
-  // try {
+    try {
+      const response = await axios.delete(`${NOTE_DELETE_URL}/${data}`);
 
-  // e.stopPropagation();
-  // e.preventDefault();
-  // setActiveNoteId(id);
-  // console.log(activeNoteId);
-  // return false;
-  // } catch (error) {
-  //   console.log("ERR:", error);
-  // }
-  // };
-  // window.
-  const [activeNoteId, setActiveNoteId] = useState(1);
-
-  //   ,() => {
-  //   return localStorage.getItem("activeNoteId") || null;
-  // });
-
-  // const navigate = useNavigate();
-  // navigate("/");
-
-  const setNoteId = (id) => {
-    // const navigate = useNavigate();
-
-    setActiveNoteId(id);
-    // localStorage.setItem("activeNoteId", id);
-    // console.log(id);
-    console.log(id);
-    // navigate(`/`, { replace: true });
-    // return false;
+      if (response.data.status == true) {
+        toast.success(response.data.message);
+        await getNotes();
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log("ERR:", error);
+    }
   };
 
-  //   const setNoteId = () => {
-  //     useEffect(() => {
-  //       const setId = (id) => {
-  //         setActiveNoteId(id);
-  //         console.log(activeNoteId);
-  // }
-  //       setNoteId(id);
-  //     }, []);
-  //   };
+  const [activeNoteId, setActiveNoteId] = useState(0);
 
-  //   const setNoteId ={ async ( (id) => {
-  //     setActiveNoteId(id);
-  //     // console.log(activeNoteId);
-  //   }
-  // ,[])=> {}};
-
-  // const setNoteId = (id) => {
-  //   try {
-  //     setActiveNoteId(id);
-  // console.log(activeNoteId);
-  // return activeNoteId;
-  // } catch (error) {
-  // console.log("ERR:", error);
-  //   }
-  // };
-  // console.log(activeNoteId);
-  // useEffect(() => {
-  //   setNoteId(activeNoteId);
-
-  // }, []);
-
-  // console.log(activeNoteId);
-  // const handleColor = (e, clr) => {
-  //   e.preventDefault();
-  //   setColor(clr);
-  //   console.log(clr);
-  // };
+  const setNoteId = (id) => {
+    setActiveNoteId(id);
+  };
 
   return (
-    // <AppLayout>
+    <AppLayout
+      editor={null}
+      children={null}
+      list={
+        notes.length == 0 ? (
+          <div
+          // className="col-span-12"
+          >
+            No records were found
+          </div>
+        ) : (
+          notes.map((item, i) => {
+            return (
+              <div
+                // className="w-1/3 border-r bg-gray-50 p-4 p-3 rounded-lg cursor-pointer border hover:bg-white transition"
+                key={i}
+                onClick={() => setNoteId(i)}
+                //       className={`p-3 rounded-lg cursor-pointer border hover:bg-white transition
 
-    (
-      // (
-        <AppLayout
-          editor={null}
-          children={null}
-          list={
-            // <div className="space-y-2"> 
-            // // {
-            // Array.isArray(notes) && notes.length > 0 ?
-
-            // notes?.notes?.
-
-            // console.log(notes),
-            notes.map((item, i) => {
-              return (
-                <div
-                  // className="w-1/3 border-r bg-gray-50 p-4 p-3 rounded-lg cursor-pointer border hover:bg-white transition"
-                  // key={i}
-                  onClick={() => setNoteId(item.id)}
-            //       className={`p-3 rounded-lg cursor-pointer border hover:bg-white transition 
-            
-            // w-1/3 border-r bg-gray-50 p-4`}
+                // w-1/3 border-r bg-gray-50 p-4`}
+              >
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    duration: 0.4,
+                    scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+                  }}
+                  style={square}
                 >
-                  <NoteItem item={item} />
-                  {/* <NoteItem item={{ title: "Test note" }} /> */}
-                </div>
-              );
-            })
-            // : null
-          }
-          // </ div >
-        // }
-        
-
-          editor={
-            <EditNote
-              activeNote={notes[activeNoteId - 1]}
-              // activeNote={notes.find(n => n.id === (activeNoteId-1))}
-            />
-          }
-
-
-
-
-        />
-      // ),
-      
-    )
-    // </div>
-    // }
-
-    // </div>
-
-    // </AppLayout>
+                  <NoteItem
+                    item={item}
+                    handleDelete={() => handleDelete(item._id)}
+                  />
+                </motion.div>
+              </div>
+            );
+          })
+        )
+      }
+      editor={<EditNote activeNote={notes[activeNoteId]} />}
+    />
   );
 };
 

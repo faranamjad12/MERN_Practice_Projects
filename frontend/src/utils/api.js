@@ -1,5 +1,8 @@
 const BASE_URL_API = "http://localhost:5001";
 
+export const LOGIN_URL = BASE_URL_API + "/login";
+export const SIGNUP_URL = BASE_URL_API + "/register";
+
 export const NOTES_URL = BASE_URL_API + "/notes";
 export const NOTE_CREATE_URL = BASE_URL_API + "/notes/create";
 

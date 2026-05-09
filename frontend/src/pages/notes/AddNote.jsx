@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router";
 import TextInput from "../../components/TextInput";
 import TextArea from "../../components/TextArea";
 import { useForm } from "react-hook-form";
-import { NOTE_CREATE_URL } from "../../src/utils/api";
+import { NOTE_CREATE_URL } from "../../utils/api";
 import toast from "react-hot-toast";
 
 const notes_url = "http://localhost:5001/notes";
@@ -36,7 +36,7 @@ const AddNote = () => {
       const response = await axios.post(NOTE_CREATE_URL, newData);
       if (response.data.status == true) {
         toast.success(response.data.message);
-        navigate('/');
+        navigate("/");
       } else {
         toast.error(response.data.message);
       }

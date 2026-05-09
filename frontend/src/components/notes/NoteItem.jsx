@@ -3,7 +3,7 @@ import { GoPencil, GoTrash } from "react-icons/go";
 import { Link } from "react-router";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { NOTE_DELETE_URL } from "../../src/utils/api.js";
+import { NOTE_DELETE_URL } from "../../utils/api.js";
 
 const NoteItem = ({ item, handleDelete }) => {
   return (

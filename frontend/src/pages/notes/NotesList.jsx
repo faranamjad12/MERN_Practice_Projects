@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import EditNote from "../../components/EditNote";
 import * as motion from "motion/react-client";
 import toast from "react-hot-toast";
-import { NOTE_DELETE_URL, NOTES_URL } from "../../src/utils/api";
+import { NOTE_DELETE_URL, NOTES_URL } from "../../utils/api";
 
 // const notes_url = "http://localhost:5001/notes";
 

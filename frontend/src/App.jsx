@@ -1,8 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router";
-import AddNote from "../pages/notes/AddNote";
-import NotesList from "../pages/notes/NotesList";
-import EditNote from "../Pages/notes/EditNote";
+import AddNote from './pages/notes/AddNote'
+import NotesList from './pages/notes/NotesList'
+import EditNote from "./pages/notes/EditNote";
+
 
 const App = () => {
   return (

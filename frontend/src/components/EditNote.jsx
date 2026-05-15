@@ -10,7 +10,7 @@ const EditNote = ({ activeNote }) => {
       </div>
 
       
-      <div className="flex flex-col relative pt-[150px]">
+      <div className="flex flex-col relative pt-[79px]">
         {/* <input */}
         Old Title
       <TextInput

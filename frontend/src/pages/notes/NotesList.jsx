@@ -8,6 +8,7 @@ import EditNote from "../../components/EditNote";
 import * as motion from "motion/react-client";
 import toast from "react-hot-toast";
 import { NOTE_DELETE_URL, NOTES_URL } from "../../utils/api";
+// import styled from "styled-components";
 
 // const notes_url = "http://localhost:5001/notes";
 
@@ -63,6 +64,7 @@ const NotesList = () => {
 
   return (
     <AppLayout
+      sidebar={true}
       editor={null}
       children={null}
       list={
@@ -79,6 +81,9 @@ const NotesList = () => {
                 // className="w-1/3 border-r bg-gray-50 p-4 p-3 rounded-lg cursor-pointer border hover:bg-white transition"
                 key={i}
                 onClick={() => setNoteId(i)}
+                // {(e) => setActiveNoteId({ ...item, activeNoteId: e.target.value })}
+                // {() => setActiveNoteId(i)}
+
                 //       className={`p-3 rounded-lg cursor-pointer border hover:bg-white transition
 
                 // w-1/3 border-r bg-gray-50 p-4`}
@@ -102,7 +107,12 @@ const NotesList = () => {
           })
         )
       }
-      editor={<EditNote activeNote={notes[activeNoteId]} />}
+      editor={
+        <EditNote activeNote={notes[activeNoteId]} />
+        
+    
+        
+      }
     />
   );
 };

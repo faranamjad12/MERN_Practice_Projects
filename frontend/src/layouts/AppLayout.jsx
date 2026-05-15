@@ -2,7 +2,7 @@ import React from "react";
 import SideBar from "../components/SideBar";
 import EditNote from "../components/EditNote";
 
-const AppLayout = ({ children, list, editor, sidebar = true }) => {
+const AppLayout = ({ children, list, editor, sidebar  }) => {
   return (
     <div className="h-screen flex bg-gray-50 text-gray-900">
       {sidebar && <SideBar />}

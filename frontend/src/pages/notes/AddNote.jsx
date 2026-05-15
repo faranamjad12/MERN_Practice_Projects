@@ -48,7 +48,7 @@ const AddNote = () => {
   return (
     // <AppLayout>
     <AppLayout
-      // sidebar={true}
+      sidebar={true}
       list={null}
       editor={null}
       children={

@@ -11,29 +11,27 @@ const NoteItem = ({ item, handleDelete }) => {
       <div>
         <h2 className="font-semibold">{item.title}</h2>
       </div>
-      <p className="text-sm text-gray-500 truncate">
+      <div className="text-sm text-gray-500 truncate">
         {item.content}
 
-        <span>
-          {
+        
+          <div className="flex justify-between items-center w-full">
             <Link
               to={`/notes/edit/${item._id}`}
               // className='p-2 shadow cursor-pointer bg-white rounded-full'
             >
               <GoPencil size={20} />
             </Link>
-          }
-
-          {
+          
+          
             <button
               onClick={() => handleDelete(item._id)}
               // className='p-2 shadow cursor-pointer bg-white rounded-full'
             >
               <GoTrash size={20} />
             </button>
-          }
-        </span>
-      </p>
+            </div>
+      </div>
     </div>
   );
 };

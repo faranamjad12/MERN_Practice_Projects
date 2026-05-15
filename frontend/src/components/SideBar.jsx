@@ -1,8 +1,17 @@
 import React from "react";
 import { GoPlus } from "react-icons/go";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import ActionButton from "./ActionButton";
 
 const SideBar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Implement logout logic here
+    // console.log("Logout clicked");
+    navigate("/login");
+  };
+
   return (
     <aside className="w-64 bg-white border-r p-4 flex flex-col">
       <h1 className="text-xl font-bold mb-6">Notes</h1>
@@ -21,6 +30,9 @@ const SideBar = () => {
         <p className="text-gray-500">Archived</p>
         <p className="text-gray-500">Trash</p>
       </nav>
+{/* <div className="bottom-btn"> */}
+        <ActionButton text="Logout" className="mt-auto" onClick={handleLogout} />
+        {/* </div> */}
     </aside>
   );
 };

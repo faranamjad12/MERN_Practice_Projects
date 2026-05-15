@@ -2,19 +2,17 @@ import React from "react";
 import AuthLayout from "../../layouts/AuthLayout";
 import TextInput from "../../components/TextInput";
 import ActionButton from "../../components/ActionButton";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import toast from "react-hot-toast";
 import { SIGNUP_URL } from "../../utils/api.js";
-
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
   const handleRegister = async (data) => {
-    // console.log(data);
     try {
       const response = await axios.post(SIGNUP_URL, data);
 
@@ -30,68 +28,137 @@ const Signup = () => {
     }
   };
 
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   email: "",
+  //   password: "",
+  //   confirmPassword: "",
+  // });
+
+  // const handleChange = (e) => {
+  //   setFormData({
+  //     ...formData,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   console.log(formData);
+  // };
+
   return (
     <AuthLayout>
-      <h1 className="text-3xl font-bold mb-2">Welcome to Notlify</h1>
-      <h1 className="text-xl mb-4">New here!</h1>
-      <form onSubmit={handleSubmit(handleRegister)}>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="username"
-          >
-            Full name
-          </label>
-          <TextInput
-            id="fullname"
-            type="text"
-            {...register("fullName")}
-            hint="Enter your full name"
-            className="py-2 px-4 rounded-lg w-full border border-gray-300 bg-gray-100"
-          />
-        </div>
+      <div className="min-h-screen bg-slate-950 flex  items-center justify-center px-6 py-10 relative overflow-hidden">
+        {/* Background Glow */}
+        <div className=" absolute top-0 left-0 w-72 h-72 bg-indigo-500/20 blur-3xl rounded-full"></div>
+        <div className=" absolute bottom-0 right-0 w-72 h-72 bg-cyan-500/20 blur-3xl rounded-full"></div>
 
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="username"
-          >
-            Email
-          </label>
-          <TextInput
-            id="email"
-            type="email"
-            {...register("email")}
-            hint="Enter your email"
-            className="py-2 px-4 rounded-lg w-full border border-gray-300 bg-gray-100"
-          />
-        </div>
+        <div className="w-full  max-w-md bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl relative z-10">
+          <div className=" mb-8 text-center">
+            <h1 className="text-4xl font-bold text-white">Create Account</h1>
 
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="username"
-          >
-            Password
-          </label>
-          <TextInput
-            id="password"
+            <p className="text-slate-400 mt-3">
+              Join and start building amazing things
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit(handleRegister)} className=" space-y-5">
+            <TextInput
+              label="fullName"
+              type="text"
+              name="fullName"
+              className="fullName"
+              placeholder="John Doe"
+              hint="John Doe"
+              borderColor="#537AF8"
+              // value={formData.name}
+              // onChange={handleChange}
+              {...register("fullName")}
+            />
+
+            <TextInput
+              label="email"
+              type="email"
+              name="email"
+              className="email"
+              placeholder="john@example.com"
+              hint="john@example.com"
+              borderColor="#537AF8"
+              // value={formData.email}
+              // onChange={handleChange}
+              {...register("email")}
+            />
+            {/* <div name="password" className="w[100px]"> */}
+            {/* <Password> */}
+            <TextInput
+              label="password"
+              type="password"
+              name="password"
+              placeholder="••••••••"
+              hint="••••••••"
+              className={"w-full"}
+              // {'w-full'}
+              // style={{ 'width': 'full' }}
+              borderColor="#537AF8"
+              // value={formData.password}
+              // onChange={handleChange}
+              {...register("password")}
+            />
+            {/* </Password> */}
+            {/* </div> */}
+            {/* <TextInput
+            label="Confirm Password"
             type="password"
-            {...register("password")}
-            hint="Enter your password"
-            className="py-2 px-4 rounded-lg w-full border border-gray-300 bg-gray-100"
-          />
-        </div>
+            name="confirmPassword"
+            placeholder="••••••••"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+          /> */}
 
-        <div className="flex items-center gap-4">
-          <ActionButton text="Signup" />
-          <Link to={"/login"} className="hover:text-blue-500">
-            Already have an account? Login
-          </Link>
+            {/* <button
+            type="submit"
+            className="
+              w-full
+              py-3
+              rounded-xl
+              bg-gradient-to-r
+              from-indigo-500
+              to-cyan-500
+              text-white
+              font-semibold
+              hover:scale-[1.02]
+              transition-all
+              duration-300
+              shadow-lg
+              shadow-cyan-500/20
+            "
+          >
+            Create Account
+            </button> */}
+
+            <ActionButton text="SignUp" className="w-full text-white" />
+          </form>
+
+          <p className="text-center text-slate-400 mt-8">
+            Already have an account?{" "}
+            <Link to={"/login"} className="text-cyan-400 hover:underline">
+              Sign In
+            </Link>
+          </p>
         </div>
-      </form>
+      </div>
     </AuthLayout>
   );
 };
 
 export default Signup;
+
+// const EditNote = styled.div`
+// `;
+
+// const Password= styled.div`
+// width:100vh
+// border :"yellow"
+// `;

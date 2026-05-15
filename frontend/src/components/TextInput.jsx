@@ -14,7 +14,7 @@
 import React from "react";
 
 const TextInput = (props) => {
-  const { type = "text", hint, className, ...otherProps } = props;
+  const { type = "text", hint, className, borderColor = 'gray', ...otherProps } = props;
 
   return (
     <input
@@ -22,6 +22,10 @@ const TextInput = (props) => {
       type={type}
       placeholder={hint}
       className={className}
+      style={{
+        border: `2px solid ${borderColor}`,
+        color:'#00593F'
+      }}
     />
   );
 };

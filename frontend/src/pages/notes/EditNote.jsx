@@ -69,6 +69,7 @@ const EditNote = () => {
 
   return (
     <AppLayout
+      sidebar={true}
       editor={null}
       list={null}
       //   >

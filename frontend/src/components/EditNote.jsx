@@ -2,6 +2,7 @@ import React from "react";
 import TextInput from "./TextInput";
 import SpeechToText from "./SpeechToText";
 
+
 const EditNote = ({ activeNote }) => {
   return (
     <section className="flex flex-col flex-1 p-6 bg-[#e7e7e0] ">
@@ -9,7 +10,7 @@ const EditNote = ({ activeNote }) => {
         <SpeechToText id={activeNote?._id} />
       </div>
       {/* {console.log(activeNote?._id)} */}
-      <div className="flex flex-col relative pt-15">
+      <div className="flex flex-col relative pt-10">
         {/* <input */}
         <p className="underline">Old Title</p>
         <TextInput

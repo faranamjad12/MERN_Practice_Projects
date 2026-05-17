@@ -14,7 +14,13 @@
 import React from "react";
 
 const TextInput = (props) => {
-  const { type = "text", hint, className, borderColor = 'gray', ...otherProps } = props;
+  const {
+    type = "text",
+    hint,
+    className,
+    borderColor = "gray",
+    ...otherProps
+  } = props;
 
   return (
     <input
@@ -24,7 +30,7 @@ const TextInput = (props) => {
       className={className}
       style={{
         border: `2px solid ${borderColor}`,
-        color:'#00593F'
+        color: "#00593F",
       }}
     />
   );

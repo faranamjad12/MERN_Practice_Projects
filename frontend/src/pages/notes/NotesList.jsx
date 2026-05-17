@@ -4,10 +4,12 @@ import AppLayout from "../../layouts/AppLayout";
 import NoteItem from "../../components/notes/NoteItem";
 import { set } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import EditNote from "../../components/EditNote";
+// import EditNote from "../../components/EditNote";
 import * as motion from "motion/react-client";
 import toast from "react-hot-toast";
 import { NOTE_DELETE_URL, NOTES_URL } from "../../utils/api";
+import EditNote from "../../components/EditNote";
+// import EditNote from "./EditNote";
 // import styled from "styled-components";
 
 // const notes_url = "http://localhost:5001/notes";

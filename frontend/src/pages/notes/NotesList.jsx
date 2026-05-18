@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import AppLayout from "../../layouts/AppLayout";
 import NoteItem from "../../components/notes/NoteItem";
 import { set } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 // import EditNote from "../../components/EditNote";
 import * as motion from "motion/react-client";
 import toast from "react-hot-toast";
@@ -14,7 +14,11 @@ import EditNote from "../../components/EditNote";
 
 // const notes_url = "http://localhost:5001/notes";
 
+
 const NotesList = () => {
+
+const navigate = useNavigate();
+
   const [notes, setNotes] = useState([]);
   const square = {
     width: "100%",
@@ -102,6 +106,7 @@ const NotesList = () => {
                   <NoteItem
                     item={item}
                     handleDelete={() => handleDelete(item._id)}
+                    
                   />
                 </motion.div>
               </div>
@@ -109,12 +114,11 @@ const NotesList = () => {
           })
         )
       }
-      editor={
-        <EditNote activeNote={notes[activeNoteId]} />
-        
-    
-        
-      }
+      editor={<EditNote activeNote={notes[activeNoteId]}
+      // onClick={() => navigate(`/notes/edit`
+      //                 ${item._id}
+      //                 )}
+      />}
     />
   );
 };

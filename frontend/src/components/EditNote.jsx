@@ -7,7 +7,7 @@ const EditNote = ({ activeNote }) => {
   return (
     <section className="flex flex-col flex-1 p-6 bg-[#e7e7e0] ">
       <div>
-        <SpeechToText id={activeNote?._id} />
+        <SpeechToText id={activeNote?._id}/>
       </div>
       {/* {console.log(activeNote?._id)} */}
       <div className="flex flex-col relative pt-10">

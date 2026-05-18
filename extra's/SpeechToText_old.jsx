@@ -6,8 +6,8 @@ import SpeechRecognition, {
 import { FaMicrophoneSlash } from "react-icons/fa6";
 import { LuCircleArrowLeft } from "react-icons/lu";
 import { FaMicrophone } from "react-icons/fa6";
-import TextInput from "./TextInput";
-import TextArea from "./TextArea";
+import TextInput from "../frontend/src/components/TextInput";
+import TextArea from "../frontend/src/components/TextArea";
 
 const SpeechToText = () => {
   const [formData, setFormData] = useState({

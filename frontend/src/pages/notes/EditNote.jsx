@@ -16,6 +16,12 @@ const EditNote = () => {
   const navigate = useNavigate();
   const params = useParams();
 
+// const { id } = useParams();
+
+//   console.log(id);
+//   return null;  
+
+
   const activeNoteCss = "border border-2";
 
   const noteClrs = ["#FEC971", "#FE9B72", "#E4EF8F", "#B391F9", "#0AB8DE"];

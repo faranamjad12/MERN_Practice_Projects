@@ -5,11 +5,11 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { NOTE_DELETE_URL } from "../../utils/api.js";
 
-const NoteItem = ({ item, handleDelete }) => {
+const NoteItem = ({ item, handleDelete, onClick }) => {
   return (
-    <div style={{ backgroundColor: item.color }}>
+    <div  style={{ backgroundColor: item.color }}>
       <div>
-        <h2 className="font-semibold">{item.title}</h2>
+        <h2 onClick={onClick} className="font-semibold">{item.title}</h2>
       </div>
       <div className="text-sm text-gray-500 truncate">
         {item.content}

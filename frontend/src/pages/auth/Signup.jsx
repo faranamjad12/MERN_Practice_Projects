@@ -68,9 +68,9 @@ const Signup = () => {
             <TextInput
               label="fullName"
               type="text"
-              name="fullName"
+              // name="fullName"
               className="fullName"
-              placeholder="John Doe"
+              // placeholder="John Doe"
               hint="John Doe"
               borderColor="#537AF8"
               // value={formData.name}
@@ -81,9 +81,9 @@ const Signup = () => {
             <TextInput
               label="email"
               type="email"
-              name="email"
+              // name="email"
               className="email"
-              placeholder="john@example.com"
+              // placeholder="john@example.com"
               hint="john@example.com"
               borderColor="#537AF8"
               // value={formData.email}
@@ -95,8 +95,8 @@ const Signup = () => {
             <TextInput
               label="password"
               type="password"
-              name="password"
-              placeholder="••••••••"
+              // name="password"
+              // placeholder="••••••••"
               hint="••••••••"
               className={"w-full"}
               // {'w-full'}

@@ -1,7 +1,7 @@
 import React from "react";
-import AuthLayout from "../../layouts/AuthLayout";
-import TextInput from "../../components/TextInput";
-import ActionButton from "../../components/ActionButton";
+import AuthLayout from "../frontend/src/layouts/AuthLayout";
+import TextInput from "../frontend/src/components/TextInput";
+import ActionButton from "../frontend/src/components/ActionButton";
 import { Link } from "react-router";
 
 const Login = () => {

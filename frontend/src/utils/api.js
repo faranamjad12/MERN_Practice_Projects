@@ -1,5 +1,8 @@
 const BASE_URL_API = "http://localhost:5001";
 
+export const FORGOT_PASSWORD_URL= BASE_URL_API + "/forgot-password"
+export const RESET_PASSWORD_URL = BASE_URL_API + "/reset-password"
+
 export const LOGIN_URL = BASE_URL_API + "/login";
 export const SIGNUP_URL = BASE_URL_API + "/register";
 

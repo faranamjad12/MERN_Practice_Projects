@@ -5,26 +5,31 @@ import ActionButton from "../../components/ActionButton";
 import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { LOGIN_URL } from "../../utils/api.js";
+import { FORGOT_PASSWORD_URL } from "../../utils/api.js";
 import { toast } from "react-hot-toast";
 
-const Login = () => {
+const ForgotPassword = () => {
   // const [formData, setFormData] = useState({
   //   email: "",
   //   password: "",
   //  });
   // register;
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
-  const handleLogin = async (data) => {
-    try {
-      const response = await axios.post(LOGIN_URL, data);
-      // console.log(response.data);
+  const handleForgotPassword = async (data) => {
+      try {
+          
+      const response = await axios.post(FORGOT_PASSWORD_URL, data);
+          console.log(response.data);
+          
+        // console.log(localStorage.getItem('useremail'));
+        //   return null;
       if (response.data.status == true) {
         toast.success(response.data.message);
-        localStorage.setItem("usertoken", response.data.token);
-        navigate("/");
+          localStorage.setItem("usertoken", response.data.token);
+          localStorage.setItem('useremail', data.email);
+        navigate("/reset-password");
       } else {
         toast.error(response.data.message);
       }
@@ -57,21 +62,26 @@ const Login = () => {
 
         <div className="w-full max-w-md bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl relative z-10">
           <div className="mb-8 text-center">
-            <h1 className="text-4xl font-bold text-white">Welcome Back</h1>
+            <h1 className=" text-4xl font-bold text-white">
+              Forgot Your Password?
+            </h1>
 
             <p className="text-slate-400 mt-3">
-              Login to continue your journey
+              Enter your email to reset your password
             </p>
           </div>
 
-          <form onSubmit={handleSubmit(handleLogin)} className="space-y-5">
+          <form
+            onSubmit={handleSubmit(handleForgotPassword)}
+            className="space-y-5"
+          >
             <TextInput
               label="Email Address"
               type="email"
               hint="abc@gmail.com"
-              className="email"
+                // className="email"
               borderColor="#537AF8"
-              // name="email"
+            //   name="email"
               placeholder="john@example.com"
               // value={formData.email}
               // onChange={handleChange}
@@ -79,20 +89,20 @@ const Login = () => {
               className={"w-full"}
             />
 
-            <TextInput
+            {/* <TextInput
               label="Password"
               id="password"
               type="password"
               className="password"
               hint="••••••••"
               borderColor="#537AF8"
-              // name="password"
+              name="password"
               placeholder="••••••••"
               // value={formData.password}
               // onChange={handleChange}
               {...register("password")}
               className={"w-full"}
-            />
+            /> */}
 
             {/* <button
             type="submit"
@@ -114,16 +124,16 @@ const Login = () => {
           >
             Sign In
           </button> */}
-            <ActionButton text="Login" className="w-full text-white" />
+            <ActionButton text="Send OTP" className="w-full text-white" />
           </form>
 
-          <div className="flex items-center gap-3 my-7">
+          {/* <div className="flex items-center gap-3 my-7">
             <div className="flex-1 h-px bg-slate-700"></div>
             <span className="text-slate-500 text-sm">OR</span>
             <div className="flex-1 h-px bg-slate-700"></div>
-          </div>
+          </div> */}
 
-          <div className="grid grid-cols-2 gap-4">
+          {/* <div className="grid grid-cols-2 gap-4">
             <button className="bg-slate-800 hover:bg-slate-700 transition text-white py-3 rounded-xl">
               Google
             </button>
@@ -131,23 +141,23 @@ const Login = () => {
             <button className="bg-slate-800 hover:bg-slate-700 transition text-white py-3 rounded-xl">
               GitHub
             </button>
-          </div>
+          </div> */}
 
-          <p className="text-center text-slate-400 mt-8">
+          {/* <p className="text-center text-slate-400 mt-8">
             Don&apos;t have an account?{" "}
             <Link to={"/register"} className="text-cyan-400 hover:underline">
               Create Account
             </Link>
-          </p>
-<p className="text-center text-slate-400 mt-8">
-           
+          </p> */}
+          {/* <p className="text-center text-slate-400 mt-8">
+           <div>
           <Link to={'/forgot-password'} className='text-cyan-400 hover:underline'>Forgot your password?</Link>
-          
-          </p>
+          </div>
+          </p> */}
         </div>
       </div>
     </AuthLayout>
   );
 };
 
-export default Login;
+export default ForgotPassword;

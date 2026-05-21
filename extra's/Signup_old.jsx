@@ -1,12 +1,12 @@
 import React from "react";
-import AuthLayout from "../../layouts/AuthLayout";
-import TextInput from "../../components/TextInput";
-import ActionButton from "../../components/ActionButton";
+import AuthLayout from "../frontend/src/layouts/AuthLayout.jsx";
+import TextInput from "../frontend/src/components/TextInput.jsx";
+import ActionButton from "../frontend/src/components/ActionButton.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { SIGNUP_URL } from "../../utils/api.js";
+import { SIGNUP_URL } from "../frontend/src/utils/api.js";
 
 const Signup = () => {
   const { register, handleSubmit, reset } = useForm();

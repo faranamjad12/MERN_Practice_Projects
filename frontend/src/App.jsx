@@ -1,13 +1,14 @@
 import React from "react";
 import { Routes, Route } from "react-router";
-import NotesList from './pages/notes/NotesList'
-import AddNote from './pages/notes/AddNote'
-import EditNote from './pages/notes/EditNote'
-import Signup from './pages/auth/Signup'
-import Login from './pages/auth/Login'
+import NotesList from "./pages/notes/NotesList";
+import AddNote from "./pages/notes/AddNote";
+import EditNote from "./pages/notes/EditNote";
+import Signup from "./pages/auth/Signup";
+import Login from "./pages/auth/Login";
 import SpeechToText from "./components/SpeechToText";
-import ForgotPassword from './pages/auth/ForgotPassword'
-import ResetPassword from './pages/auth/ResetPassword'
+import ForgotPassword from "./pages/auth/ForgotPassword";
+import ResetPassword from "./pages/auth/ResetPassword";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 const App = () => {
   return (
@@ -15,16 +16,19 @@ const App = () => {
       {/* Authentication Routes */}
       <Route path="/register" element={<Signup />} />
       <Route path="/login" element={<Login />} />
-      <Route path='/forgot-password' element={<ForgotPassword />}/>
-      <Route path='/reset-password' element={<ResetPassword />}/>
-      <Route path='/' element={<NotesList />}/>
-      <Route path="/" element={<NotesList />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      {/* <Route path='/' element={<NotesList />}/>
+      <Route path="/" element={<NotesList />} /> */}
       {/* <Route path="/notes/update" element={<SpeechToText />} /> */}
 
-      <Route path="/notes/add" element={<AddNote />} />
-      <Route path="/notes/edit/:id" element={<EditNote />} />
-      <Route path="/notes/edit" element={<SpeechToText />} />
-      <Route path="/" element={<NotesList />} />
+      {/* protected routes  */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/" element={<NotesList />} />
+        <Route path="/notes/add" element={<AddNote />} />
+        <Route path="/notes/edit/:id" element={<EditNote />} />
+        <Route path="/notes/edit" element={<SpeechToText />} />
+      </Route>
     </Routes>
   );
 };

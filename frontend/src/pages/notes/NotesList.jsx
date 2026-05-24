@@ -7,17 +7,15 @@ import { useNavigate } from "react-router";
 // import EditNote from "../../components/EditNote";
 import * as motion from "motion/react-client";
 import toast from "react-hot-toast";
-import { NOTE_DELETE_URL, NOTES_URL } from "../../utils/api";
+import { NOTE_DELETE_URL, NOTES_URL } from "../../utils/api.js";
 import EditNote from "../../components/EditNote";
 // import EditNote from "./EditNote";
 // import styled from "styled-components";
 
 // const notes_url = "http://localhost:5001/notes";
 
-
 const NotesList = () => {
-
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [notes, setNotes] = useState([]);
   const square = {
@@ -49,7 +47,11 @@ const navigate = useNavigate();
     }
 
     try {
-      const response = await axios.delete(`${NOTE_DELETE_URL}/${data}`);
+      const response = await axios.delete(`${NOTE_DELETE_URL}/${data}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("usertoken")}`,
+        },
+      });
 
       if (response.data.status == true) {
         toast.success(response.data.message);
@@ -106,7 +108,6 @@ const navigate = useNavigate();
                   <NoteItem
                     item={item}
                     handleDelete={() => handleDelete(item._id)}
-                    
                   />
                 </motion.div>
               </div>
@@ -114,11 +115,14 @@ const navigate = useNavigate();
           })
         )
       }
-      editor={<EditNote activeNote={notes[activeNoteId]}
-      // onClick={() => navigate(`/notes/edit`
-      //                 ${item._id}
-      //                 )}
-      />}
+      editor={
+        <EditNote
+          activeNote={notes[activeNoteId]}
+          // onClick={() => navigate(`/notes/edit`
+          //                 ${item._id}
+          //                 )}
+        />
+      }
     />
   );
 };

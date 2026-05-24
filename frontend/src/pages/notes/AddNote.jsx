@@ -1,13 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AppLayout from "../../layouts/AppLayout";
+import NoteItem from "../../components/notes/NoteItem";
 import { GoArrowLeft } from "react-icons/go";
 import { Link, useNavigate } from "react-router";
 import TextInput from "../../components/TextInput";
 import TextArea from "../../components/TextArea";
 import { useForm } from "react-hook-form";
-import { NOTE_CREATE_URL } from "../../utils/api";
+import { NOTE_CREATE_URL } from "../../utils/api.js";
 import toast from "react-hot-toast";
+import ActionButton from "../../components/ActionButton.jsx";
 
 const notes_url = "http://localhost:5001/notes";
 
@@ -33,7 +35,11 @@ const AddNote = () => {
         color: color,
       };
 
-      const response = await axios.post(NOTE_CREATE_URL, newData);
+      const response = await axios.post(NOTE_CREATE_URL, newData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("usertoken")}`,
+        },
+      });
       if (response.data.status == true) {
         toast.success(response.data.message);
         navigate("/");
@@ -98,9 +104,10 @@ const AddNote = () => {
               </div>
 
               <div>
-                <button className="bg-gray-900 text-white py-4 px-6 rounded-lg shadow font-bold">
+                {/* <button className="bg-gray-900 text-white py-4 px-6 rounded-lg shadow font-bold">
                   Add new note
-                </button>
+                </button> */}
+                <ActionButton text="Add new note" />
               </div>
             </form>
           </div>

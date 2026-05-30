@@ -5,6 +5,7 @@ export const RESET_PASSWORD_URL = BASE_URL_API + "/reset-password"
 
 export const LOGIN_URL = BASE_URL_API + "/login";
 export const SIGNUP_URL = BASE_URL_API + "/register";
+export const VERIFY_USER        = BASE_URL_API + "/verify-user"
 
 export const NOTES_URL = BASE_URL_API + "/notes";
 export const NOTE_CREATE_URL = BASE_URL_API + "/notes/create";

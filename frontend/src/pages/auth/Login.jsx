@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { LOGIN_URL } from "../../utils/api.js";
 import { toast } from "react-hot-toast";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 const Login = () => {
   // const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ const Login = () => {
   // register;
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleLogin = async (data) => {
     try {
@@ -24,6 +26,7 @@ const Login = () => {
       if (response.data.status == true) {
         toast.success(response.data.message);
         localStorage.setItem("usertoken", response.data.token);
+        login(response.data.token, response.data.user)
         navigate("/");
       } else {
         toast.error(response.data.message);

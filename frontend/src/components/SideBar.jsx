@@ -35,7 +35,7 @@ const SideBar = () => {
         <p className="text-gray-500">Trash</p>
       </nav>
       <div className="bottom-btn mt-auto">
-      <p className='font-medium text-sm bg-gray-200 px-3 py-1 rounded-full'>{user.name} | {user.email}
+      <p className='font-medium text-sm bg-gray-200 px-3 py-1 rounded-full'>{user.name}  {user.email}
         <ActionButton text="Logout" className='mt-auto ml-3 cursor-pointer bg-gray-900 hover:bg-gray-200 
           transition-colors text-md text-gray-200 
           hover:text-gray-800 font-medium px-3 py-1 rounded-full' onClick={handleLogout} />

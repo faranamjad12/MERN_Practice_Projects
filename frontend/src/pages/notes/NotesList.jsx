@@ -87,6 +87,7 @@ const NotesList = () => {
             return (
               <div
                 // className="w-1/3 border-r bg-gray-50 p-4 p-3 rounded-lg cursor-pointer border hover:bg-white transition"
+                
                 key={i}
                 onClick={() => setNoteId(i)}
                 // {(e) => setActiveNoteId({ ...item, activeNoteId: e.target.value })}

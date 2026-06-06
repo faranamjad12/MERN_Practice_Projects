@@ -14,6 +14,7 @@ const EditNote = ({ activeNote }) => {
         {/* <input */}
         <p className="underline">Old Title</p>
         <TextInput
+          readOnly
           type="text"
           hint={activeNote?.title || "No title"}
           value={activeNote?.title || "No title"}
@@ -26,6 +27,7 @@ const EditNote = ({ activeNote }) => {
       /> */}
         <p className="underline">Old Content</p>
         <TextInput
+          readOnly
           type="text"
           hint={activeNote?.content || "No content"}
           value={activeNote?.content || "No content"}

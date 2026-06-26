@@ -26,7 +26,7 @@ const Login = () => {
       if (response.data.status == true) {
         toast.success(response.data.message);
         localStorage.setItem("usertoken", response.data.token);
-        login(response.data.token, response.data.user)
+        login(response.data.token, response.data.user);
         navigate("/");
       } else {
         toast.error(response.data.message);
@@ -142,10 +142,13 @@ const Login = () => {
               Create Account
             </Link>
           </p>
-<p className="text-center text-slate-400 mt-8">
-           
-          <Link to={'/forgot-password'} className='text-cyan-400 hover:underline'>Forgot your password?</Link>
-          
+          <p className="text-center text-slate-400 mt-8">
+            <Link
+              to={"/forgot-password"}
+              className="text-cyan-400 hover:underline"
+            >
+              Forgot your password?
+            </Link>
           </p>
         </div>
       </div>

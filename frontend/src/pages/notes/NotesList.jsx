@@ -25,7 +25,11 @@ const NotesList = () => {
 
   const getNotes = async () => {
     try {
-      const response = await axios.get(NOTES_URL);
+      const response = await axios.get(NOTES_URL, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("usertoken")}`,
+        },
+      });
       if (response.data.status == true) {
         setNotes(response.data.notes);
         // console.log(response.data.notes);
@@ -87,7 +91,7 @@ const NotesList = () => {
             return (
               <div
                 // className="w-1/3 border-r bg-gray-50 p-4 p-3 rounded-lg cursor-pointer border hover:bg-white transition"
-                
+
                 key={i}
                 onClick={() => setNoteId(i)}
                 // {(e) => setActiveNoteId({ ...item, activeNoteId: e.target.value })}

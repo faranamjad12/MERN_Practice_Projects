@@ -22,10 +22,10 @@ const ResetPassword = () => {
         const email = localStorage.getItem('useremail')
       data.email = email
       const response = await axios.post(RESET_PASSWORD_URL, data);
-    //   console.log(response.data);
+      // console.log(response.data);
       if (response.data.status == true) {
         toast.success(response.data.message);
-        localStorage.setItem("usertoken", response.data.token);
+        // localStorage.setItem("usertoken", response.data.token);
         navigate("/login");
       } else {
         toast.error(response.data.message);

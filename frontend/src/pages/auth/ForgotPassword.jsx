@@ -18,17 +18,18 @@ const ForgotPassword = () => {
   const navigate = useNavigate();
 
   const handleForgotPassword = async (data) => {
-      try {
-          
+    // console.log(data);
+    // return null;
+    try {
       const response = await axios.post(FORGOT_PASSWORD_URL, data);
-          console.log(response.data);
-          
-        // console.log(localStorage.getItem('useremail'));
-        //   return null;
+      console.log(response.data);
+
+      // console.log(localStorage.getItem('useremail'));
+      //   return null;
       if (response.data.status == true) {
         toast.success(response.data.message);
-          localStorage.setItem("usertoken", response.data.token);
-          localStorage.setItem('useremail', data.email);
+        localStorage.setItem("usertoken", response.data.token);
+        localStorage.setItem("useremail", data.email);
         navigate("/reset-password");
       } else {
         toast.error(response.data.message);
@@ -79,9 +80,9 @@ const ForgotPassword = () => {
               label="Email Address"
               type="email"
               hint="abc@gmail.com"
-                // className="email"
+              // className="email"
               borderColor="#537AF8"
-            //   name="email"
+              //   name="email"
               placeholder="john@example.com"
               // value={formData.email}
               // onChange={handleChange}
